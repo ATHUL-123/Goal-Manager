@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 8000; 
 const goalRoutes = require('./routes/goalRoutes');
 const userRoutes = require('./routes/userRoutes')
+const adminRoutes = require("./adminSide/routes/adminRoutes")
 const {errorHandler}= require('./middleware/errorMiddleware');
 const connectDB =require('./config/db')
 connectDB()
@@ -12,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use('/api/goals', goalRoutes);
 app.use('/api/users', userRoutes);
-
+app.use('/api/admin',adminRoutes)
 
 app.use(errorHandler)
 
